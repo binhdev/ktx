@@ -9,8 +9,11 @@ class UserResource extends Resource {
   /**
    * @var type
    */
-  public toArray($request){
+  public function toArray($request){
     return [
+      'id' => $this->id,
+      'name' => $this->name,
+      'email' => $this->email
     ];
   }
 
