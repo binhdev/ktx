@@ -7,7 +7,7 @@ use App\Http\Resources\UserResource;
 
 class UserRepository {
 
-    public function colleciton(){
+    public function collection(){
       return UserResource::collection(User::orderBy('created_at', 'desc')->paginate(25));
     }
     /**
@@ -36,7 +36,7 @@ class UserRepository {
      */
     public function update($request, $id){
         $user = User::findOrFail($id);
-        $user->update($request->only(['username']));
+        $user->update($request->only(['name']));
         return new UserResource($user);
     }
 
