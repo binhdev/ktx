@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\User;
+
+use App\Models\Phong;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\UserRepository;
-use App\Http\Requests\Api\UserStoreRequest;
-use App\Http\Requests\Api\UserUpdateRequest;
+use App\Repositories\PhongRepository;
 
-class UserController extends Controller
+class PhongController extends Controller
 {
     /**
      * Object Repository instance
@@ -17,7 +16,7 @@ class UserController extends Controller
      */
     protected $repository;
 
-    public function __construct(UserRepository $repository)
+    public function __construct(PhongRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -41,13 +40,13 @@ class UserController extends Controller
       return $this->repository->show($id);
     }
 
-    public function store(UserStoreRequest $request)
+    public function store(PhongStoreRequest $request)
     {
         $request->validated();
         return $this->repository->store($request);
     }
 
-    public function update(UserUpdateRequest $request, $id)
+    public function update(PhongUpdateRequest $request, $id)
     {
         $request->validated();
         return $this->repository->update($request, $id);
