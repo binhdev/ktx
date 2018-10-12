@@ -13,11 +13,20 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
 Route::group(['prefix' => '/v1', 'namespace' => 'Api'], function(){
+
+  /**
+   * Authentication
+   * */
+  Route::post('/login','AuthController@postLogin');
+  // Register
+  Route::post('/register','AuthController@postRegister');
+  // Protected with APIToken Middleware
+  Route::middleware('APIToken')->group(function () {
+    // Logout
+    Route::post('/logout','AuthController@postLogout');
+  });
 
   /**
    * Restful users api
