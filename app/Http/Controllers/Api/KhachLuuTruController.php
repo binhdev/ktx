@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 
-use App\Models\Phong;
+use App\Models\KhachLuuTru;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\PhongRepository;
-use App\Http\Requests\Api\PhongStoreRequest;
-use App\Http\Requests\Api\PhongUpdateRequest;
+use App\Repositories\KhachLuuTruRepository;
+use App\Http\Requests\Api\KhachLuuTruStoreRequest;
+use App\Http\Requests\Api\KhachLuuTruUpdateRequest;
 
-class PhongController extends Controller
+class KhachLuuTruController extends Controller
 {
     /**
      * Object Repository instance
@@ -18,7 +18,7 @@ class PhongController extends Controller
      */
     protected $repository;
 
-    public function __construct(PhongRepository $repository)
+    public function __construct(KhachLuuTruRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -42,13 +42,13 @@ class PhongController extends Controller
       return $this->repository->show($id);
     }
 
-    public function store(PhongStoreRequest $request)
+    public function store(KhachLuuTruStoreRequest $request)
     {
         $request->validated();
         return $this->repository->store($request);
     }
 
-    public function update(PhongUpdateRequest $request, $id)
+    public function update(KhachLuuTruUpdateRequest $request, $id)
     {
         $request->validated();
         return $this->repository->update($request, $id);
