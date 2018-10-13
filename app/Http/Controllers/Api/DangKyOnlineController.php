@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 
-use App\Models\Phong;
+use App\Models\DangKyOnline;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\PhongRepository;
-use App\Http\Requests\Api\PhongStoreRequest;
-use App\Http\Requests\Api\PhongUpdateRequest;
+use App\Repositories\DangKyOnlineRepository;
+use App\Http\Requests\Api\DangKyOnlineStoreRequest;
+use App\Http\Requests\Api\DangKyOnlineUpdateRequest;
 
-class PhongController extends Controller
+class DangKyOnlineController extends Controller
 {
     /**
      * Object Repository instance
@@ -18,7 +18,7 @@ class PhongController extends Controller
      */
     protected $repository;
 
-    public function __construct(PhongRepository $repository)
+    public function __construct(DangKyOnlineRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -42,13 +42,13 @@ class PhongController extends Controller
       return $this->repository->show($id);
     }
 
-    public function store(PhongStoreRequest $request)
+    public function store(DangKyOnlineStoreRequest $request)
     {
         $request->validated();
         return $this->repository->store($request);
     }
 
-    public function update(PhongUpdateRequest $request, $id)
+    public function update(DangKyOnlineUpdateRequest $request, $id)
     {
         $request->validated();
         return $this->repository->update($request, $id);
