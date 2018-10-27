@@ -80,6 +80,11 @@ Route::group(['prefix' => '/v1', 'namespace' => 'Api'], function(){
     Route::put('dangkyonlines/{id}', 'DangKyOnlineController@update');
     Route::delete('dangkyonlines/{id}', 'DangKyOnlineController@destroy');
 
+    Route::get('taisan', 'TaiSanController@index');
+    Route::get('taisan/{id}', 'TaiSanController@show');
+    Route::post('taisan', 'TaiSanController@store');
+    Route::put('taisan/{id}', 'TaiSanController@update');
+    Route::delete('taisan/{id}', 'TaiSanController@destroy');
+    
   });
-
 });
