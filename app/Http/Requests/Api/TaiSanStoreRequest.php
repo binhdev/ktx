@@ -4,7 +4,7 @@ namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DanhMucStoreRequest extends FormRequest {
+class TaiSanStoreRequest extends FormRequest {
 
     /**
      * Description
@@ -23,8 +23,11 @@ class DanhMucStoreRequest extends FormRequest {
     public function rules()
     {
         return [
-            'ten_danh_muc' => 'required|string',
-            'ghi_chu' => 'required|string'
+            'ten_tai_san' => 'required|string|min:3',
+            'don_vi_tinh' => 'required|string|min:2',
+            'so_luong' => 'required|integer',
+            'tinh_trang' => 'required|string|min:2',
+            'phong_id' => 'required|integer'
         ];
     }
 }
