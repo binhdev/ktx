@@ -22,6 +22,13 @@ Route::group(['prefix' => '/v1', 'namespace' => 'Api'], function(){
   Route::post('/login','AuthController@postLogin');
   // Register
   Route::post('/register','AuthController@postRegister');
+
+  Route::get('users', 'UserController@index');
+
+  /**
+  * Khach luu tru
+  */
+  Route::get('khachluutrus', 'KhachLuuTruController@index');
   // Protected with APIToken Middleware
   Route::middleware('APIToken')->group(function () {
     // Logout
@@ -30,7 +37,7 @@ Route::group(['prefix' => '/v1', 'namespace' => 'Api'], function(){
     /**
      * Restful users api
     * */
-    Route::get('users', 'UserController@index');
+    // Route::get('users', 'UserController@index');
     Route::get('users/{id}', 'UserController@show');
     Route::post('users', 'UserController@store');
     Route::put('users/{id}', 'UserController@update');
@@ -66,7 +73,7 @@ Route::group(['prefix' => '/v1', 'namespace' => 'Api'], function(){
     /**
      * Restful khach luu tru api
      * */
-    Route::get('khachluutrus', 'KhachLuuTruController@index');
+    // Route::get('khachluutrus', 'KhachLuuTruController@index');
     Route::get('khachluutrus/{id}', 'KhachLuuTruController@show');
     Route::post('khachluutrus', 'KhachLuuTruController@store');
     Route::put('khachluutrus/{id}', 'KhachLuuTruController@update');
@@ -85,6 +92,6 @@ Route::group(['prefix' => '/v1', 'namespace' => 'Api'], function(){
     Route::post('taisan', 'TaiSanController@store');
     Route::put('taisan/{id}', 'TaiSanController@update');
     Route::delete('taisan/{id}', 'TaiSanController@destroy');
-    
+
   });
 });

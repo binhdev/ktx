@@ -8,7 +8,7 @@ use App\Http\Resources\KhachLuuTruResource;
 class KhachLuuTruRepository {
 
     public function collection(){
-      return PhongResource::collection(KhachLuuTru::orderBy('created_at', 'desc')->paginate(25));
+      return KhachLuuTruResource::collection(KhachLuuTru::orderBy('created_at', 'desc')->paginate(25));
     }
     /**
      * Show a user member
@@ -16,7 +16,7 @@ class KhachLuuTruRepository {
      * @return void
      */
     public function show($id){
-      return new PhongResource(KhachLuuTru::findOrFail($id));
+      return new KhachLuuTruResource(KhachLuuTru::findOrFail($id));
     }
 
     /**
