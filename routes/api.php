@@ -14,34 +14,26 @@ use Illuminate\Http\Request;
 */
 
 
-Route::group(['prefix' => '/v1', 'namespace' => 'Api'], function(){
+Route::group(['prefix' => '/v1', 'namespace' => 'Api'], function(){  
 
   /**
    * Authentication
    * */
-  Route::post('/login','AuthController@postLogin');
-  // Register
-  Route::post('/register','AuthController@postRegister');
+  Route::post('auth/login', 'AuthController@login');
+  Route::post('auth/register', 'AuthController@register');
 
-  Route::get('users', 'UserController@index');
-
-  /**
-  * Khach luu tru
-  */
-  Route::get('khachluutrus', 'KhachLuuTruController@index');
-  // Protected with APIToken Middleware
-  Route::middleware('APIToken')->group(function () {
-    // Logout
-    Route::post('/logout','AuthController@postLogout');
+  Route::middleware('jwt.auth')->group(function(){    
+    Route::get('auth/logout', 'AuthController@logout');
+    Route::get('auth/user', 'AuthController@me');
 
     /**
      * Restful users api
     * */
-    // Route::get('users', 'UserController@index');
+    Route::get('users', 'UserController@index');
+    Route::delete('users/{id}', 'UserController@destroy');
     Route::get('users/{id}', 'UserController@show');
     Route::post('users', 'UserController@store');
     Route::put('users/{id}', 'UserController@update');
-    Route::delete('users/{id}', 'UserController@destroy');
 
     /**
      * Restful phong api
@@ -73,7 +65,7 @@ Route::group(['prefix' => '/v1', 'namespace' => 'Api'], function(){
     /**
      * Restful khach luu tru api
      * */
-    // Route::get('khachluutrus', 'KhachLuuTruController@index');
+    Route::get('khachluutrus', 'KhachLuuTruController@index');
     Route::get('khachluutrus/{id}', 'KhachLuuTruController@show');
     Route::post('khachluutrus', 'KhachLuuTruController@store');
     Route::put('khachluutrus/{id}', 'KhachLuuTruController@update');
@@ -91,7 +83,8 @@ Route::group(['prefix' => '/v1', 'namespace' => 'Api'], function(){
     Route::get('taisan/{id}', 'TaiSanController@show');
     Route::post('taisan', 'TaiSanController@store');
     Route::put('taisan/{id}', 'TaiSanController@update');
-    Route::delete('taisan/{id}', 'TaiSanController@destroy');
+    Route::delete('taisan/{id}', 'TaiSanController@destroy');   
 
   });
+    
 });

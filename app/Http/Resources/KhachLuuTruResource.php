@@ -12,8 +12,8 @@ class KhachLuuTruResource extends Resource {
   public function toArray($request){
     return [
       'id' => $this->id,
-      'ho_ten' => $this->ten_danh_muc,
-      'cmnd' => $this->ghi_chu,
+      'ho_ten' => $this->ho_ten,
+      'cmnd' => $this->cmnd,
       'dien_thoai' => $this->dien_thoai,
       'dia_chi' => $this->dia_chi,
       'ngay_vao' => $this->ngay_vao,
