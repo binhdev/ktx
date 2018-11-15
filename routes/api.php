@@ -15,14 +15,18 @@ use Illuminate\Http\Request;
 
 
 Route::group(['prefix' => '/v1', 'namespace' => 'Api'], function(){  
-
   /**
    * Authentication
    * */
   Route::post('auth/login', 'AuthController@login');
   Route::post('auth/register', 'AuthController@register');
+  Route::get('khachluutrus', 'KhachLuuTruController@index');
+  
+  // Route::delete('users/{id}', 'UserController@destroy');
+  // Route::get('users', 'UserController@index');
+  
 
-  Route::middleware('jwt.auth')->group(function(){    
+  //Route::middleware('jwt.auth')->group(function(){    
     Route::get('auth/logout', 'AuthController@logout');
     Route::get('auth/user', 'AuthController@me');
 
@@ -65,7 +69,7 @@ Route::group(['prefix' => '/v1', 'namespace' => 'Api'], function(){
     /**
      * Restful khach luu tru api
      * */
-    Route::get('khachluutrus', 'KhachLuuTruController@index');
+    // Route::get('khachluutrus', 'KhachLuuTruController@index');
     Route::get('khachluutrus/{id}', 'KhachLuuTruController@show');
     Route::post('khachluutrus', 'KhachLuuTruController@store');
     Route::put('khachluutrus/{id}', 'KhachLuuTruController@update');
@@ -85,6 +89,6 @@ Route::group(['prefix' => '/v1', 'namespace' => 'Api'], function(){
     Route::put('taisan/{id}', 'TaiSanController@update');
     Route::delete('taisan/{id}', 'TaiSanController@destroy');   
 
-  });
+//  });
     
 });
