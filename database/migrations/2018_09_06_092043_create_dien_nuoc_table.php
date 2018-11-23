@@ -15,8 +15,7 @@ class CreateDienNuocTable extends Migration
     {
         Schema::create('dien_nuoc', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('phong_id');
-            $table->foreign('phong_id')->references('id')->on('phong');
+            $table->integer('phong_id')->unsigned();
 
             $table->timestamp('tu_ngay')->nullable();;
             $table->timestamp('den_ngay')->nullable();;
@@ -35,6 +34,7 @@ class CreateDienNuocTable extends Migration
             $table->string('ghi_chu');
 
             $table->timestamps();
+            $table->foreign('phong_id')->references('id')->on('phong');
         });
     }
 
