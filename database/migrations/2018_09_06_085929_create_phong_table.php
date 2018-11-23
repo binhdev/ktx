@@ -16,11 +16,12 @@ class CreatePhongTable extends Migration
         Schema::create('phong', function (Blueprint $table) {
             $table->increments('id');
             $table->string('ten_phong');
-            $table->unsignedInteger('danh_muc_id');
-            $table->foreign('danh_muc_id')->references('id')->on('danh_muc');
+            $table->integer('danh_muc_id')->unsigned();
             $table->integer('so_khach_hien_tai')->default(0);
             $table->string('ghi_chu');
             $table->timestamps();
+            
+            $table->foreign('danh_muc_id')->references('id')->on('danh_muc');
         });
     }
 

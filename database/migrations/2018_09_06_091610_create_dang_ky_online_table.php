@@ -20,10 +20,10 @@ class CreateDangKyOnlineTable extends Migration
             $table->string('cmnd');
             $table->string('dien_thoai');
             $table->string('dia_chi');
-            $table->unsignedInteger('loai_khach_id');
-            $table->foreign('loai_khach_id')->references('id')->on('loai_khach');
+            $table->integer('loai_khach_id')->unsigned();
             $table->integer('tinh_trang');
             $table->timestamps();
+            $table->foreign('loai_khach_id')->references('id')->on('loai_khach');
         });
     }
 

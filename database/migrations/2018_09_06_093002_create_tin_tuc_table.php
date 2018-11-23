@@ -21,9 +21,9 @@ class CreateTinTucTable extends Migration
             $table->string('anh_minh_hoa');
             $table->string('file_dinh_kem');
             $table->timestamp('ngay_dang_tin');
-            $table->unsignedInteger('the_loai_tin_id');
-            $table->foreign('the_loai_tin_id')->references('id')->on('the_loai_tin');
+            $table->integer('the_loai_tin_id')->unsigned();
             $table->timestamps();
+            $table->foreign('the_loai_tin_id')->references('id')->on('the_loai_tin');
         });
     }
 

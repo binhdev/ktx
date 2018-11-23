@@ -21,10 +21,10 @@ class CreateLienHeTable extends Migration
             $table->string('email');
             $table->string('noi_dung_lien_he');
             $table->string('noi_dung_tra_loi');
-            $table->unsignedInteger('nguoi_dung_id');
-            $table->foreign('nguoi_dung_id')->references('id')->on('users');
+            $table->integer('nguoi_dung_id')->unsigned();
             $table->integer('tinh_trang');
             $table->timestamps();
+            $table->foreign('nguoi_dung_id')->references('id')->on('users');
         });
     }
 

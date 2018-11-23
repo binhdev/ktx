@@ -22,13 +22,13 @@ class CreateKhachLuuTruTable extends Migration
             $table->timestamp('ngay_vao')->nullable();
             $table->timestamp('ngay_ra')->nullable();
 
-            $table->unsignedInteger('phong_id');
-            $table->foreign('phong_id')->references('id')->on('phong');
+            $table->integer('phong_id')->unsigned();
 
-            $table->unsignedInteger('loai_khac_id');
-            $table->foreign('loai_khac_id')->references('id')->on('loai_khach');
+            $table->integer('loai_khach_id')->unsigned();
 
             $table->timestamps();
+            $table->foreign('phong_id')->references('id')->on('phong');
+            $table->foreign('loai_khach_id')->references('id')->on('loai_khach');
         });
     }
 

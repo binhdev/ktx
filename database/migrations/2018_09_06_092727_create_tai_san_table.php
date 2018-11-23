@@ -19,9 +19,9 @@ class CreateTaiSanTable extends Migration
             $table->string('don_vi_tinh');
             $table->integer('so_luong');
             $table->integer('tinh_trang');
-            $table->unsignedInteger('phong_id');
-            $table->foreign('phong_id')->references('id')->on('phong');
+            $table->integer('phong_id')->unsigned();
             $table->timestamps();
+            $table->foreign('phong_id')->references('id')->on('phong');
         });
     }
 
