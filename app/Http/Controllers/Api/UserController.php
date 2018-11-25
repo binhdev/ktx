@@ -48,7 +48,7 @@ class UserController extends Controller
     }
 
     public function update(UserUpdateRequest $request, $id)
-    {
+    {   
         $request->validated();
         return $this->repository->update($request, $id);
     }
