@@ -21,10 +21,6 @@ Route::group(['prefix' => '/v1', 'namespace' => 'Api'], function(){
   Route::post('auth/login', 'AuthController@login');
   Route::post('auth/register', 'AuthController@register');
   Route::get('khachluutrus', 'KhachLuuTruController@index');
-  
-  // Route::delete('users/{id}', 'UserController@destroy');
-  // Route::get('users', 'UserController@index');
-  
 
   //Route::middleware('jwt.auth')->group(function(){    
     Route::get('auth/logout', 'AuthController@logout');
@@ -34,10 +30,10 @@ Route::group(['prefix' => '/v1', 'namespace' => 'Api'], function(){
      * Restful users api
     * */
     Route::get('users', 'UserController@index');
-    Route::delete('users/{id}', 'UserController@destroy');
     Route::get('users/{id}', 'UserController@show');
     Route::post('users', 'UserController@store');
     Route::put('users/{id}', 'UserController@update');
+    Route::delete('users/{id}', 'UserController@destroy');
 
     /**
      * Restful phong api

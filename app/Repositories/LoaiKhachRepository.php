@@ -8,7 +8,7 @@ use App\Http\Resources\LoaiKhachResource;
 class LoaiKhachRepository {
 
     public function collection(){
-      return PhongResource::collection(LoaiKhach::orderBy('created_at', 'desc')->paginate(25));
+      return LoaiKhachResource::collection(LoaiKhach::orderBy('created_at', 'desc')->paginate(25));
     }
     /**
      * Show a user member
@@ -16,7 +16,7 @@ class LoaiKhachRepository {
      * @return void
      */
     public function show($id){
-      return new PhongResource(LoaiKhach::findOrFail($id));
+      return new LoaiKhachResource(LoaiKhach::findOrFail($id));
     }
 
     /**
